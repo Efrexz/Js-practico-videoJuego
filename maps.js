@@ -12,12 +12,14 @@ const emojis = {
     'BOMB_COLLISION': '🔥',
     'GAME_OVER': '👎',
     'WIN': '🏆',
+    'HEART': "💙",
+    "BOOM": "💥"
   };
   
   const maps = [];
   maps.push(`
-    IXXXXXXXXX
     -XXXXXXXXX
+    IXXXXXXXXX
     -XXXXXXXXX
     -XXXXXXXXX
     -XXXXXXXXX
