@@ -21,9 +21,11 @@ const spanLives = document.querySelector("#vidas");
 const spanTime = document.querySelector("#tiempo");
 const spanRecord = document.querySelector("#record");
 const pResult = document.querySelector("#resultado");
+const btnReinicio = document.querySelector(".reiniciar");
 
 window.addEventListener("load",setCanvasSize);
 window.addEventListener("resize",renderMap);/*Este evento hace que cada vez que se adapte nuestro html por ejemplo con la consola se ejecute la funcion*/
+btnReinicio.addEventListener("click", reiniciarMapa);
 
 
 let canvasSize;
@@ -131,10 +133,10 @@ function setCanvasSize(){
         canvasSize = window.innerHeight * 0.8;
     }
     /*Luego de acuerdo al resultado del condicional modificamos el ancho y largo de nuevos canvas modificandole sus atributos*/
-    canvas.setAttribute("Width", canvasSize);
-    canvas.setAttribute("Height", canvasSize);
+    canvas.setAttribute("Width", Math.floor(canvasSize));
+    canvas.setAttribute("Height",  Math.floor(canvasSize));
     
-    iconSize = (canvasSize / 10)*0.97;/*Esto lo hacemos ya que deseamos que entren 10 iconos en nuestro canvas osea cada icono ocuparia el 10 % del canvas*/
+    iconSize = Math.floor((canvasSize / 10)*0.97);/*Esto lo hacemos ya que deseamos que entren 10 iconos en nuestro canvas osea cada icono ocuparia el 10 % del canvas le agrego el math.floor para poder quitarle tanto decimal y evitar errores*/
 
     renderMap()
 }
@@ -191,6 +193,7 @@ function levelLost(){
     renderMap();
 }
 function winGame(){
+    clearInterval(tiempoTranscurrido);
     let playerTime = Date.now() - tiempoDeInicio;
     if(record){
         if(record >= playerTime){
@@ -202,8 +205,6 @@ function winGame(){
     }else{
         record = localStorage.setItem("recordTime" , playerTime);
     }
-
-    clearInterval(tiempoTranscurrido);
     setTimeout(()=> {reiniciarMapa();
     showRecord()}, 5000);
 }

@@ -20,7 +20,7 @@ body {
     border-radius: 8px;
     background-color: #feff9d;
   }
-  
+
   .btns {
     display: flex;
     justify-content: center;
@@ -41,6 +41,10 @@ body {
   button:not(:last-child) {
     margin-right: 10px;
   }
+  .info-container{
+    display: flex;
+    justify-content: space-between;
+  }
   
   .messages {
     display: flex;
@@ -55,8 +59,16 @@ body {
     margin: 0;
     width: 100%;
   }
+  .reiniciar{
+    text-align: center;
+    width: 100px;
+    height: 90px;
+    border: 4px orange solid;
+    border-radius: 100%;
+    color: red;
+  }
   
   @media (max-width: 440px) {
-    button { margin-top: 25px; }
+    button { margin-top: 5px; }
     #up, #down { margin-left: 100%; margin-right: 100%; }
   }
